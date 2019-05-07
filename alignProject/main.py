@@ -1,7 +1,7 @@
 import os, sys, time
 from prettyprinter import cpprint, set_default_style
 
-set_default_style('light')
+# set_default_style('light')
 
 from extractWordDocx2txt import docx2text
 from breakEnSenStrict import breakEnSen
