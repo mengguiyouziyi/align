@@ -24,7 +24,6 @@ def iter_files(rootDir):
     for root, dirs, files in os.walk(rootDir):
         for file in files:
             file_name = os.path.join(root, file)
-            print(file_name)
             yield file_name
         for dirname in dirs:
             iter_files(dirname)
@@ -53,6 +52,7 @@ if __name__ == '__main__':
             print(yaw_dir, yiw_dir)
             en_list = [f for f in iter_files(yaw_dir)]
             cn_list = [f for f in iter_files(yiw_dir)]
-            print(en_list, cn_list)
+            print(en_list)
+            print(cn_list)
             time.sleep(1)
 
