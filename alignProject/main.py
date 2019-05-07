@@ -55,4 +55,5 @@ if __name__ == '__main__':
             print(en_list)
             print(cn_list)
             time.sleep(1)
+            print('=====================================')
 
