@@ -47,7 +47,8 @@ if __name__ == '__main__':
     rootDir = r'罗氏/英译中/英译中'
     for root, dirs, files in os.walk(os.path.join(bpath, rootDir)):
         # print(root, dirs, files)
-        en_list = cn_list = []
+        en_list = []
+        cn_list = []
         for dir in dirs:
             for unno_dir in os.listdir(os.path.join(root, dir)):
                 unno_dir = os.path.join(root, dir, unno_dir)
