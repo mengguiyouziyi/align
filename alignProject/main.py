@@ -24,6 +24,7 @@ def iter_files(rootDir):
     for root, dirs, files in os.walk(rootDir):
         for file in files:
             file_name = os.path.join(root, file)
+            print(file_name)
             yield file_name
         for dirname in dirs:
             iter_files(dirname)
