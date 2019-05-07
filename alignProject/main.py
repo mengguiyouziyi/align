@@ -1,4 +1,7 @@
 import os, sys, time
+from prettyprinter import cpprint, set_default_style
+
+set_default_style('light')
 
 from extractWordDocx2txt import docx2text
 from breakEnSenStrict import breakEnSen
@@ -49,11 +52,11 @@ if __name__ == '__main__':
         for dir in dirs:
             yaw_dir = os.path.join(root, dir, '翻译原文')
             yiw_dir = os.path.join(root, dir, '发送稿')
-            print(yaw_dir, yiw_dir)
+            cpprint(yaw_dir, yiw_dir)
             en_list = [f for f in iter_files(yaw_dir)]
             cn_list = [f for f in iter_files(yiw_dir)]
-            print(en_list)
-            print(cn_list)
+            cpprint(en_list)
+            cpprint(cn_list)
             time.sleep(1)
             print('=====================================')
 
