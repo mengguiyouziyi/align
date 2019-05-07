@@ -31,25 +31,10 @@ def iter_files(rootDir):
 
 
 def main(rootDir):
-    # cn_list = []
-    # en_list = []
-    # for fname in iter_files(rootDir):
-    #     if '-CN' in fname:
-    #         cn_list.append(fname)
-    #     else:
-    #         en_list.append(fname)
-    # return cn_list, en_list
-    return iter_files(rootDir)
-
-
-if __name__ == '__main__':
-    bpath = r'/home/wande/文档'
-    rootDir = r'罗氏/英译中/英译中'
-    for root, dirs, files in os.walk(os.path.join(bpath, rootDir)):
-        # print(root, dirs, files)
-        en_list = []
-        cn_list = []
+    for root, dirs, files in os.walk(rootDir):
         for dir in dirs:
+            en_list = []
+            cn_list = []
             for unno_dir in os.listdir(os.path.join(root, dir)):
                 unno_dir = os.path.join(root, dir, unno_dir)
                 for f in iter_files(unno_dir):
@@ -57,7 +42,16 @@ if __name__ == '__main__':
                         cn_list.append(f)
                     else:
                         en_list.append(f)
-            pprint(cn_list)
-            pprint(en_list)
-            time.sleep(1)
-            print('=====================================')
+
+            yield en_list, cn_list
+
+
+if __name__ == '__main__':
+    rootDir = r'/home/wande/文档/罗氏/英译中/英译中'
+    for en_list, cn_list in main(rootDir):
+        file_en_list = [os.path.basename(p) for p in en_list]
+        file_cn_list = [os.path.basename(p) for p in cn_list]
+        pprint(file_en_list)
+        pprint(file_cn_list)
+        time.sleep(1)
+        print('=====================================')
