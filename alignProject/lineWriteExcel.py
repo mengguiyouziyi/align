@@ -11,9 +11,9 @@ def toExcel(align_label_path, en_sen_path, zh_sen_path, excel_path):
     :param excel_path: 导出的excel文件路径
     :return:
     """
-    current_path = os.getcwd()
+
     # 筛选对应行号，入 xxx_num_list
-    align = open(os.path.join(current_path, '../file', align_label_path), 'r', encoding='utf-8')
+    align = open(align_label_path, 'r', encoding='utf-8')
     src_num_list = []
     tgt_num_list = []
     for line in align.readlines():
@@ -24,14 +24,14 @@ def toExcel(align_label_path, en_sen_path, zh_sen_path, excel_path):
         src_num_list.append(src_num)
         tgt_num_list.append(tgt_num)
     # 根据行号提取对照文本，入 xxx_list
-    src_sen_file = open(os.path.join(current_path, '../file', en_sen_path), 'r', encoding='utf-8')
-    tgt_sen_file = open(os.path.join(current_path, '../file', zh_sen_path), 'r', encoding='utf-8')
+    src_sen_file = open(en_sen_path, 'r', encoding='utf-8')
+    tgt_sen_file = open(zh_sen_path, 'r', encoding='utf-8')
     src_sen_list = src_sen_file.readlines()
     src_list = [src_sen_list[int(i) - 1] for i in src_num_list]
     tgt_sen_list = tgt_sen_file.readlines()
     tgt_list = [tgt_sen_list[int(i) - 1] for i in tgt_num_list]
     # 将对照文本写入文件
-    excel_path_file = os.path.join(current_path, '../file', excel_path)
+    excel_path_file = excel_path
     workbook = xlwt.Workbook()
     worksheet = workbook.add_sheet('align')
     for i, en, zh in zip(range(len(src_list)), src_list, tgt_list):

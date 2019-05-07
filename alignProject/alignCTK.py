@@ -1,7 +1,7 @@
 import subprocess
 
 
-def alignCTK(en_sen_path, zh_sen_path, align_label_path, cham_path):
+def alignCTK(en_sen_path, zh_sen_path, align_label_path, cham_path=r'/home/wande/align/champollion-1.2/'):
     """
         /search/odin/meng/xingzong/champollion-1.2/
         /home/wande/align/champollion-1.2/
