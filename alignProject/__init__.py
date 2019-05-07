@@ -3,4 +3,3 @@ from .breakEnSenStrict import breakEnSen
 from .breakZhSenStrict import breakZhSen
 from .alignCTK import alignCTK
 from .lineWriteExcel import toExcel
-import alignProject
