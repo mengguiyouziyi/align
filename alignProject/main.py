@@ -43,12 +43,13 @@ def main(rootDir):
 
 
 if __name__ == '__main__':
-    bpath = r'/home/wande/文档/'
-    rootDir = r'罗氏/英译中/英译中/'
-    for root, dirs, files in os.walk(bpath + rootDir):
+    bpath = r'/home/wande/文档'
+    rootDir = r'罗氏/英译中/英译中'
+    for root, dirs, files in os.walk(os.path.join(bpath, rootDir)):
+        # print(root, dirs, files)
         for dir in dirs:
-            yaw_dir = dir + '/翻译原文/'
-            yiw_dir = dir + '/发送稿/'
+            yaw_dir = os.path.join(root, dir, '翻译原文')
+            yiw_dir = os.path.join(root, dir, '发送稿')
             print(yaw_dir, yiw_dir)
             en_list = [f for f in iter_files(yaw_dir)]
             cn_list = [f for f in iter_files(yiw_dir)]
