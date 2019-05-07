@@ -1,4 +1,4 @@
-import os, sys
+import os, sys, time
 
 from extractWordDocx2txt import docx2text
 from breakEnSenStrict import breakEnSen
@@ -52,3 +52,5 @@ if __name__ == '__main__':
             en_list = [f for f in iter_files(yaw_dir)]
             cn_list = [f for f in iter_files(yiw_dir)]
             print(en_list, cn_list)
+            time.sleep(1)
+
