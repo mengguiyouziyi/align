@@ -1,7 +1,7 @@
 import docx2txt
 
 
-def doc2txt_docx2txt(doc_path, txt_org_path):
+def docx2text(doc_path, txt_org_path):
     """
         使用docx2txt包，将docx中的中英文文本提取到txt文件中
     :param doc_path: docx文件路径
