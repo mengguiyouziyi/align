@@ -48,13 +48,12 @@ if __name__ == '__main__':
     for root, dirs, files in os.walk(os.path.join(bpath, rootDir)):
         # print(root, dirs, files)
         for dir in dirs:
-            yaw_dir = os.path.join(root, dir, '翻译原文')
-            yiw_dir = os.path.join(root, dir, '发送稿')
-            pprint(yaw_dir)
-            en_list = [f for f in iter_files(yaw_dir)]
-            cn_list = [f for f in iter_files(yiw_dir)]
-            pprint(en_list)
-            pprint(cn_list)
+            unknown_dir = os.listdir(os.path.join(root, dir))
+            unknown_list1 = [f for f in iter_files(unknown_dir[0])]
+            unknown_list2 = [f for f in iter_files(unknown_dir[1])]
+
+            pprint(unknown_list1)
+            pprint(unknown_list2)
             time.sleep(1)
             print('=====================================')
 
