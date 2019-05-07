@@ -33,6 +33,7 @@ def iter_files(rootDir):
 def main(rootDir):
     for root, dirs, files in os.walk(rootDir):
         for dir in dirs:
+            print(dir)
             en_list = []
             cn_list = []
             for unno_dir in os.listdir(os.path.join(root, dir)):
