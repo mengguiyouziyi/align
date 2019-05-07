@@ -49,6 +49,7 @@ if __name__ == '__main__':
         for dir in dirs:
             yaw_dir = dir + '/翻译原文/'
             yiw_dir = dir + '/发送稿/'
+            print(yaw_dir, yiw_dir)
             en_list = [f for f in iter_files(yaw_dir)]
             cn_list = [f for f in iter_files(yiw_dir)]
             print(en_list, cn_list)
