@@ -45,7 +45,7 @@ def main(rootDir):
 if __name__ == '__main__':
     bpath = r'/home/wande/文档/'
     rootDir = r'罗氏/英译中/英译中/'
-    for root, dirs, files in os.walk(rootDir):
+    for root, dirs, files in os.walk(bpath + rootDir):
         for dir in dirs:
             yaw_dir = dir + '/翻译原文/'
             yiw_dir = dir + '/发送稿/'
