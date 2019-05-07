@@ -49,8 +49,8 @@ if __name__ == '__main__':
         # print(root, dirs, files)
         for dir in dirs:
             unknown_dir = os.listdir(os.path.join(root, dir))
-            unknown_list1 = [f for f in iter_files(unknown_dir[0])]
-            unknown_list2 = [f for f in iter_files(unknown_dir[1])]
+            unknown_list1 = [f for f in iter_files(os.path.join(root, dir, unknown_dir[0]))]
+            unknown_list2 = [f for f in iter_files(os.path.join(root, dir, unknown_dir[1]))]
 
             pprint(unknown_list1)
             pprint(unknown_list2)
