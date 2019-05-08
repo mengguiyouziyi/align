@@ -62,7 +62,7 @@ def breakEnSen(en_org_path, en_sen_path):
                 continue
 
             if (not EP.search(line)) and (line_len < 30):  # 行中没有标点并且字数小于60字
-                print(repr("[ 行中没有标点并且字数小于60字 ]"), '-->', line)
+                print(repr("[ 行中没有标点并且长度小于30 ]"), '-->', line)
                 continue
 
             line_list.append(line)
