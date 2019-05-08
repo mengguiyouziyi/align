@@ -2,6 +2,8 @@ import os
 import re
 import nltk
 
+nltk.download('punkt')
+
 
 def breakEnSen(en_org_path, en_sen_path):
     """
