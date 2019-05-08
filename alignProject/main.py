@@ -58,8 +58,6 @@ if __name__ == '__main__':
         if len(en_list) != len(cn_list):
             continue
         for en_file, cn_file in zip(en_list, cn_list):
-            if en_file not in cn_file:
-                continue
             if not en_file.endswith('.docx'):
                 continue
             if not cn_file.endswith('.docx'):
@@ -72,6 +70,8 @@ if __name__ == '__main__':
             zh_doc_dir = os.path.dirname(zh_doc_path)
             en_doc_name = os.path.splitext(en_doc_path)[0].replace(rootDir, resultDir)
             zh_doc_name = os.path.splitext(zh_doc_path)[0].replace(rootDir, resultDir)
+            if en_doc_name not in zh_doc_name:
+                continue
             # 从doc到txt
             en_org_path = en_doc_name + '-org.en'
             zh_org_path = zh_doc_name + '-org.zh'
