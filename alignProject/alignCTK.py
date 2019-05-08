@@ -13,7 +13,7 @@ def alignCTK(en_sen_path, zh_sen_path, align_label_path, cham_path=r'/home/wande
     """
     return_code = subprocess.call(f"""
         export PATH={cham_path}bin:$PATH && export CTK={cham_path} &&
-        champollion.EC_utf8 {en_sen_path} {zh_sen_path} {align_label_path}
+        champollion.EC_utf8 `{en_sen_path}` `{zh_sen_path}` `{align_label_path}`
     """, shell=True)
     print(f"""
         export PATH={cham_path}bin:$PATH && export CTK={cham_path} &&
