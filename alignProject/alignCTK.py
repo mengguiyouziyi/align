@@ -16,3 +16,10 @@ def alignCTK(en_sen_path, zh_sen_path, align_label_path, cham_path=r'/home/wande
         champollion.EC_utf8 {en_sen_path} {zh_sen_path} {align_label_path}
     """, shell=True)
     print(return_code)
+
+
+if __name__ == '__main__':
+    en_sen_path = r'/home/wande/文档/alignFile/罗氏-20180102（Anny Zhao）-英中/翻译原文/MO39171 ICF V3 22DEC2017 FINAL-sen.en'
+    zh_sen_path = r'/home/wande/文档/alignFile/罗氏-20180102（Anny Zhao）-英中/发送稿/MO39171 ICF V3 22DEC2017 FINAL-CN-sen.zh'
+    align_label_path = r'/home/wande/文档/alignFile/罗氏-20180102（Anny Zhao）-英中/翻译原文/MO39171 ICF V3 22DEC2017 FINAL-align-label.txt'
+    alignCTK(en_sen_path, zh_sen_path, align_label_path)
