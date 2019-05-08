@@ -82,8 +82,8 @@ if __name__ == '__main__':
             # 从doc到txt
             en_org_path = en_doc_name + '-org.en'
             zh_org_path = zh_doc_name + '-org.zh'
-            docx2text(en_doc_path, en_org_path)
-            docx2text(zh_doc_path, zh_org_path)
+            docx2text(en_file, en_org_path)
+            docx2text(cn_file, zh_org_path)
             # 从txt到breakSen
             en_sen_path = en_doc_name + '-sen.en'
             zh_sen_path = zh_doc_name + '-sen.zh'
