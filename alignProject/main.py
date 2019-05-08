@@ -62,8 +62,10 @@ if __name__ == '__main__':
                 continue
             if not cn_file.endswith('.docx'):
                 continue
-            en_doc_path = en_file.replace(' ', '-').replace('\xa0', '-').replace('（', '-').replace('）', '-')
-            zh_doc_path = cn_file.replace(' ', '-').replace('\xa0', '-').replace('（', '-').replace('）', '-')
+            en_doc_path = en_file.replace(' ', '-').replace('\xa0', '-').replace('（', '-').replace('）', '-').replace(
+                '(', '-').replace(')', '-')
+            zh_doc_path = cn_file.replace(' ', '-').replace('\xa0', '-').replace('（', '-').replace('）', '-').replace(
+                '(', '-').replace(')', '-')
             en_doc_file = os.path.basename(en_doc_path)
             zh_doc_file = os.path.basename(zh_doc_path)
             en_doc_dir = os.path.dirname(en_doc_path).replace(rootDir, resultDir)
