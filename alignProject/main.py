@@ -71,6 +71,7 @@ if __name__ == '__main__':
             en_doc_name = os.path.splitext(en_doc_path)[0].replace(rootDir, resultDir)
             zh_doc_name = os.path.splitext(zh_doc_path)[0].replace(rootDir, resultDir)
             if en_doc_name not in zh_doc_name:
+                print(en_doc_name, zh_doc_name)
                 continue
             # 从doc到txt
             en_org_path = en_doc_name + '-org.en'
