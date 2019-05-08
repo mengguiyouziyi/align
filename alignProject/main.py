@@ -50,7 +50,7 @@ def main(rootDir):
 if __name__ == '__main__':
     rootDir = r'/home/wande/文档/罗氏/英译中/英译中'
     resultDir = r'/home/wande/文档/alignFile'
-    for en_list, cn_list in main(rootDir):
+    for i, (en_list, cn_list) in enumerate(main(rootDir)):
         file_en_list = [os.path.basename(p) for p in en_list]
         file_cn_list = [os.path.basename(p) for p in cn_list]
         pprint(file_en_list)
@@ -62,8 +62,8 @@ if __name__ == '__main__':
                 continue
             if not cn_file.endswith('.docx'):
                 continue
-            en_doc_path = en_file
-            zh_doc_path = cn_file
+            en_doc_path = en_file.replace(' ', '-').replace('\xa0', '-')
+            zh_doc_path = cn_file.replace(' ', '-').replace('\xa0', '-')
             en_doc_file = os.path.basename(en_doc_path)
             zh_doc_file = os.path.basename(zh_doc_path)
             en_doc_dir = os.path.dirname(en_doc_path).replace(rootDir, resultDir)
