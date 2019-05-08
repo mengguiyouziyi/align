@@ -62,7 +62,7 @@ def breakZhSen(zh_org_path, zh_sen_path):
                 continue
 
             if (not EP.search(line)) and (line_len < 15):
-                print(repr("[ 不含各种标点且长度小于15 ]"), '-->', line)
+                print(repr("[ 非标点结束并且长度小于15 ]"), '-->', line)
                 continue
             para_list.append(line)
         para = '\n'.join(para_list)
