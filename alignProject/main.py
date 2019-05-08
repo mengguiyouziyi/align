@@ -97,5 +97,5 @@ if __name__ == '__main__':
             # 从align-label到excel
             excel_path = en_doc_name + '.xls'
             toExcel(align_label_path, en_sen_path, zh_sen_path, excel_path)
-            exit()
+            # exit()
 
