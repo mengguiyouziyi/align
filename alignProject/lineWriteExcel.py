@@ -34,12 +34,15 @@ def toExcel(align_label_path, en_sen_path, zh_sen_path, excel_path):
     excel_path_file = excel_path
     workbook = xlwt.Workbook()
     worksheet = workbook.add_sheet('align')
+    n = 0
     for i, en, zh in zip(range(len(src_list)), src_list, tgt_list):
         if 1.4 > (len(en) / len(zh)) or (len(en) / len(zh)) > 2.6:
             print('英文/中文<1.4或>2.6: ', len(en) / len(zh), en, zh)
             continue
-        worksheet.write(i, 0, en.strip())
-        worksheet.write(i, 1, zh.strip())
+
+        worksheet.write(n, 0, en.strip())
+        worksheet.write(n, 1, zh.strip())
+        n += 1
     workbook.save(excel_path_file)
 
     align.close()
