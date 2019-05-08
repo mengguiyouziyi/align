@@ -70,8 +70,8 @@ if __name__ == '__main__':
             zh_doc_file = os.path.basename(zh_doc_path)
             en_doc_dir = os.path.dirname(en_doc_path)
             zh_doc_dir = os.path.dirname(zh_doc_path)
-            en_doc_name = os.path.splitext(en_doc_path)
-            zh_doc_name = os.path.splitext(zh_doc_path)
+            en_doc_name = os.path.splitext(en_doc_path)[0].replace(rootDir, resultDir)
+            zh_doc_name = os.path.splitext(zh_doc_path)[0].replace(rootDir, resultDir)
             # 从doc到txt
             en_org_path = en_doc_name + '-org.en'
             zh_org_path = zh_doc_name + '-org.zh'
