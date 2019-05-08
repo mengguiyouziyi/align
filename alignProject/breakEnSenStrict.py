@@ -37,21 +37,21 @@ def breakEnSen(en_org_path, en_sen_path):
             line = line.replace('\t', ' ')  # tab
             line = line.replace('•', '')
             if re.search(r'([0-9a-zA-Z])\1{3,}', line):  # aaa，aTTT
-                print(repr("if re.search(r'([0-9a-zA-Z])\1{3,}', line):"), '~~~~~~~~~~~', line)
+                print(repr("[ if re.search(r'([0-9a-zA-Z])\1{3,}', line): ]"), '-->', line)
                 continue
             line_len = len(line)
-            if line_len < 10:  # 单行小于2
-                print(repr("if line_len < 2:"), '~~~~~~~~~~~', line)
+            if line_len < 20:  # 单行小于20
+                print(repr("[ 单行小于20 ]"), '-->', line)
                 continue
             big_len = len(re.findall(r'[A-Z]', line))
-            if (big_len / line_len > 0.7) and (line_len < 10):  # 大写占比70%且总长度小于10
-                print(repr("if (big_len / line_len > 0.7) and line_len < 10"), '~~~~~~~~~~~', line)
+            if big_len / line_len > 0.7:  # 大写占比70%且总长度小于20
+                print(repr("[ 大写占比70% ]"), '-->', line)
                 continue
             if len(re.findall(r'[0-9.\[\];\s]', line)) == line_len:  # 2.2，...， 2222
-                print(repr("if len(re.findall(r'[0-9.\[\]]', line)) == line_len:"), '~~~~~~~~~~~', line)
+                print(repr("[ 行中全部是'数字.[];不知名空白' ]"), '-->', line)
                 continue
-            if re.findall(r'\d{2} [A-Z][a-z]+ \d{4}- \d{2} [A-Z][a-z]+ \d{4}', line):
-                print(repr("re.findall(r'\d{2} [A-Z][a-z]+ \d{4}-\s*\d{2} [A-Z][a-z]+ \d{4}'"), '~~~~~~~~~~~', line)
+            if re.findall(r'\d{2} [A-Z][a-z]+ \d{4}- \d{2} [A-Z][a-z]+ \d{4}', line):  # 22 Asabs 2222- 22 Asg 3333
+                print(repr("[ re.findall(r'\d{2} [A-Z][a-z]+ \d{4}- \d{2} [A-Z][a-z]+ \d{4}', line): ]"), '-->', line)
                 continue
 
             if 'References' == line:
@@ -61,8 +61,8 @@ def breakEnSen(en_org_path, en_sen_path):
                 break_num = i
                 continue
 
-            if (not EP.search(line)) and (line_len < 60):
-                print(repr("EP: "), '~~~~~~~~~~~', line)
+            if (not EP.search(line)) and (line_len < 60):  # 行中没有标点并且字数小于60字
+                print(repr("[ 行中没有标点并且字数小于60字 ]"), '-->', line)
                 continue
 
             line_list.append(line)
