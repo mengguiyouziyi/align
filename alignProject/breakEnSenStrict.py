@@ -45,10 +45,10 @@ def breakEnSen(en_org_path, en_sen_path):
                 continue
             big_len = len(re.findall(r'[A-Z]', line))
             if big_len / line_len > 0.7:  # 大写占比70%且总长度小于20
-                print(repr("[ 大写占比70% ]"), '-->', line)
+                print(repr("[ 大写占比70%且总长度小于20 ]"), '-->', line)
                 continue
             if len(re.findall(r'[0-9.\[\];\s]', line)) == line_len:  # 2.2，...， 2222
-                print(repr("[ 行中全部是'数字.[];不知名空白' ]"), '-->', line)
+                print(repr("[ 行中全部是<数字.[];不知名空白> ]"), '-->', line)
                 continue
             if re.findall(r'\d{2} [A-Z][a-z]+ \d{4}- \d{2} [A-Z][a-z]+ \d{4}', line):  # 22 Asabs 2222- 22 Asg 3333
                 print(repr("[ re.findall(r'\d{2} [A-Z][a-z]+ \d{4}- \d{2} [A-Z][a-z]+ \d{4}', line): ]"), '-->', line)
@@ -61,7 +61,7 @@ def breakEnSen(en_org_path, en_sen_path):
                 break_num = i
                 continue
 
-            if (not EP.search(line)) and (line_len < 60):  # 行中没有标点并且字数小于60字
+            if (not EP.search(line)) and (line_len < 30):  # 行中没有标点并且字数小于60字
                 print(repr("[ 行中没有标点并且字数小于60字 ]"), '-->', line)
                 continue
 

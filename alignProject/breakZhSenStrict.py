@@ -31,28 +31,28 @@ def breakZhSen(zh_org_path, zh_sen_path):
             line = re.sub(r'\[[0-9;]*?\]', r'', line)  # [;;;]
             line = re.sub(r'\s{2,}', r'', line)  # 多个空白
             line = re.sub(r' ', r'', line)  # 不知名的空格
-            line = line.replace('•', '')
+            line = line.replace('•', '').replace('●', '')
             line = line.replace('\t', '')  # tab
             line = line.strip()
             if not line:
                 continue
             if re.search(r'([0-9a-zA-Z])\1{3,}', line):  # aaa，aTTT
-                print(repr("if re.search(r'([0-9a-zA-Z])\1{3,}', line):"), '~~~~~~~~~~~', line)
+                print(repr("[ if re.search(r'([0-9a-zA-Z])\1{3,}', line): ]"), '-->', line)
                 continue
             line_len = len(line)
-            if line_len < 5:  # 单行小于2
-                print(repr("if line_len < 5:"), '~~~~~~~~~~~', line)
+            if line_len < 10:  # 单行小于10
+                print(repr("[ 单行小于10 ]"), '-->', line)
                 continue
             big_len = len(re.findall(r'[A-Z]', line))
             if (big_len / line_len > 0.7) and line_len < 10:  # 大写占比70%且总长度小于10
-                print(repr("if (big_len / line_len > 0.7) and line_len < 10"), '~~~~~~~~~~~', line)
+                print(repr("[ 大写占比70%且总长度小于10 ]"), '-->', line)
                 continue
             if len(re.findall(r'[0-9.\[\];\s]', line)) == line_len:  # 2.2，...， 2222
-                print(repr("if len(re.findall(r'[0-9.\[\]];\s]', line)) == line_len:"), '~~~~~~~~~~~', line)
+                print(repr("[ 行中全部是<数字.[];不知名空白> ]"), '-->', line)
                 continue
 
-            if len(cncomp.findall(line)) / line_len < 0.3:
-                print(repr("cncomp.findall(line) / line_len < 0.3"), '~~~~~~~~~~~', line)
+            if len(cncomp.findall(line)) / line_len < 0.2:
+                print(repr("[ 汉字/总长<0.2 ]"), '-->', line)
                 continue
             if '参考文献' == line:
                 break_num = i
@@ -61,8 +61,8 @@ def breakZhSen(zh_org_path, zh_sen_path):
                 break_num = i
                 continue
 
-            if (not EP.search(line)) and (line_len < 30):
-                print(repr("EP: "), '~~~~~~~~~~~', line)
+            if (not EP.search(line)) and (line_len < 15):
+                print(repr("[ EP: ]"), '-->', line)
                 continue
             para_list.append(line)
         para = '\n'.join(para_list)
