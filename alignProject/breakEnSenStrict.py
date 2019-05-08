@@ -61,7 +61,7 @@ def breakEnSen(en_org_path, en_sen_path):
                 break_num = i
                 continue
 
-            if (not EP.search(line)) and (line_len < 30):  # 行中没有标点并且字数小于60字
+            if (not EP.search(line)) and (line_len < 40):  # 行中没有标点并且字数小于60字
                 print(repr("[ 非标点结束并且长度小于30 ]"), '-->', line)
                 continue
 
