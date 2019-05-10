@@ -43,9 +43,9 @@ def breakEnSen(en_org_path, en_sen_path):
             if line_len < 20:  # 单行小于20
                 print(repr("[ 单行小于20 ]"), '-->', line)
                 continue
-            big_len = len(re.findall(r'[A-Z]', line))
+            big_len = len(re.findall(r'[A-Z:."?!0-9]', line))
             if big_len / line_len > 0.7:  # 大写占比70%且总长度小于20
-                print(repr("[ 大写占比70%且总长度小于20 ]"), '-->', line)
+                print(repr("[ 大写标点数字占比70%且总长度小于20 ]"), '-->', line)
                 continue
             if len(re.findall(r'[0-9.\[\];\s]', line)) == line_len:  # 2.2，...， 2222
                 print(repr("[ 行中全部是<数字.[];不知名空白> ]"), '-->', line)

@@ -1,4 +1,4 @@
-import os, sys, time
+import os, sys, time, re
 from pprint import pprint
 
 from extractWordDocx2txt import docx2text
@@ -50,6 +50,7 @@ def main(rootDir):
 if __name__ == '__main__':
     rootDir = r'/home/wande/文档/罗氏/英译中/英译中'
     resultDir = r'/home/wande/文档/alignFile'
+    r = re.compile(r'[^-\u4e00-\u9fa5A-Za-z0-9_/]')
     for i, (en_list, cn_list) in enumerate(main(rootDir)):
         file_en_list = [os.path.basename(p) for p in en_list]
         file_cn_list = [os.path.basename(p) for p in cn_list]
@@ -62,10 +63,12 @@ if __name__ == '__main__':
                 continue
             if not cn_file.endswith('.docx'):
                 continue
-            en_doc_path = en_file.replace(' ', '-').replace('\xa0', '-').replace('（', '-').replace('）', '-').replace(
-                '(', '-').replace(')', '-')
-            zh_doc_path = cn_file.replace(' ', '-').replace('\xa0', '-').replace('（', '-').replace('）', '-').replace(
-                '(', '-').replace(')', '-')
+            # en_doc_path = en_file.replace(' ', '-').replace('\xa0', '-').replace('（', '-').replace('）', '-').replace(
+            #     '(', '-').replace(')', '-')
+            # zh_doc_path = cn_file.replace(' ', '-').replace('\xa0', '-').replace('（', '-').replace('）', '-').replace(
+            #     '(', '-').replace(')', '-')
+            en_doc_path = r.sub('-', en_file.replace('.docx', '')) + '.docx'
+            zh_doc_path = r.sub('-', cn_file.replace('.docx', '')) + '.docx'
             en_doc_file = os.path.basename(en_doc_path)
             zh_doc_file = os.path.basename(zh_doc_path)
             en_doc_dir = os.path.dirname(en_doc_path).replace(rootDir, resultDir)
@@ -98,4 +101,3 @@ if __name__ == '__main__':
             excel_path = en_doc_name + '.xls'
             toExcel(align_label_path, en_sen_path, zh_sen_path, excel_path)
             # exit()
-
