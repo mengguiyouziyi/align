@@ -1,13 +1,42 @@
-['/home/wande/文档/罗氏/英译中/英译中/罗氏-20180102（Anny Zhao）-英中/发送稿/MO39171 English_Patient Card 1_V1 FINAL_2017-05-16-CN.doc',
- '/home/wande/文档/罗氏/英译中/英译中/罗氏-20180102（Anny Zhao）-英中/发送稿/MO39171 ICF V3 22DEC2017 FINAL-CN.docx',
- '/home/wande/文档/罗氏/英译中/英译中/罗氏-20180102（Anny Zhao）-英中/发送稿/MO39171 TAIL Protocol V3 22DEC2017 FINAL Tracked-CN(tracking).docx',
- '/home/wande/文档/罗氏/英译中/英译中/罗氏-20180102（Anny Zhao）-英中/翻译原文/MO39171 English_Patient Card 1_V1 FINAL_2017-05-16.doc',
- '/home/wande/文档/罗氏/英译中/英译中/罗氏-20180102（Anny Zhao）-英中/翻译原文/MO39171 ICF V3 22DEC2017 FINAL.docx',
- '/home/wande/文档/罗氏/英译中/英译中/罗氏-20180102（Anny Zhao）-英中/翻译原文/MO39171 TAIL Protocol V3 22DEC2017 FINAL Tracked.docx']
+import re, os
 
-['/home/wande/文档/罗氏/英译中/英译中/罗氏-20180102（Anny Zhao）-英中/发送稿/MO39171 English_Patient Card 1_V1 FINAL_2017-05-16-CN.doc',
- '/home/wande/文档/罗氏/英译中/英译中/罗氏-20180102（Anny Zhao）-英中/发送稿/MO39171 ICF V3 22DEC2017 FINAL-CN.docx',
- '/home/wande/文档/罗氏/英译中/英译中/罗氏-20180102（Anny Zhao）-英中/发送稿/MO39171 TAIL Protocol V3 22DEC2017 FINAL Tracked-CN(tracking).docx',
- '/home/wande/文档/罗氏/英译中/英译中/罗氏-20180102（Anny Zhao）-英中/翻译原文/MO39171 English_Patient Card 1_V1 FINAL_2017-05-16.doc',
- '/home/wande/文档/罗氏/英译中/英译中/罗氏-20180102（Anny Zhao）-英中/翻译原文/MO39171 ICF V3 22DEC2017 FINAL.docx',
- '/home/wande/文档/罗氏/英译中/英译中/罗氏-20180102（Anny Zhao）-英中/翻译原文/MO39171 TAIL Protocol V3 22DEC2017 FINAL Tracked.docx']
+from extractWordDocx2txt import docx2text
+from breakEnSenStrict import breakEnSen
+from breakZhSenStrict import breakZhSen
+from alignCTK import alignCTK
+from lineWriteExcel import toExcel
+
+
+def addDir(file, bdir):
+    return os.path.join(bdir, file)
+
+
+bdir = '/home/wande/文档/docx'
+en_file = 'CTS-147_Rev01_CntrNxtONE_UG_b941835_CE_EU_EN_V5_3_3CMS_C.docx'
+cn_file = 'CTS-147_Rev01_CntrNxtONE_UG_b941835_CE_EU_EN_V5_3_3CMS_C-CN.docx'
+en_doc_name = os.path.splitext(en_file)[0]
+zh_doc_name = os.path.splitext(en_file)[0]
+en_file = addDir(en_file, bdir)
+cn_file = addDir(cn_file, bdir)
+en_doc_name = addDir(en_doc_name, bdir)
+zh_doc_name = addDir(zh_doc_name, bdir)
+
+r = re.compile(r'[^-\u4e00-\u9fa5A-Za-z0-9_/]')
+en_doc_path = r.sub('-', en_file.replace('.docx', '')) + '.docx'
+zh_doc_path = r.sub('-', cn_file.replace('.docx', '')) + '.docx'
+# 从doc到txt
+en_org_path = en_doc_name + '-org.en'
+zh_org_path = zh_doc_name + '-org.zh'
+docx2text(en_file, en_org_path)
+docx2text(cn_file, zh_org_path)
+# 从txt到breakSen
+en_sen_path = en_doc_name + '-sen.en'
+zh_sen_path = zh_doc_name + '-sen.zh'
+breakEnSen(en_org_path, en_sen_path)
+breakZhSen(zh_org_path, zh_sen_path)
+# 从sen到align
+align_label_path = en_doc_name + '-align-label.txt'
+alignCTK(en_sen_path, zh_sen_path, align_label_path)
+# 从align-label到excel
+excel_path = en_doc_name + '.xls'
+toExcel(align_label_path, en_sen_path, zh_sen_path, excel_path)
