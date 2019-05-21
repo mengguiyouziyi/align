@@ -48,7 +48,7 @@ def main(rootDir):
 
 
 if __name__ == '__main__':
-    rootDir = r'/home/wande/文档/罗氏/英译中/英译中'
+    rootDir = r'/home/wande/文档/docx'
     resultDir = r'/home/wande/文档/alignFile'
     r = re.compile(r'[^-\u4e00-\u9fa5A-Za-z0-9_/]')
     for i, (en_list, cn_list) in enumerate(main(rootDir)):
