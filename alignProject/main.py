@@ -32,6 +32,7 @@ def iter_files(rootDir):
 
 def main(rootDir):
     for root, dirs, files in os.walk(rootDir):
+        print(dirs)
         for dir in dirs:
             print(dir)
             en_list = []
