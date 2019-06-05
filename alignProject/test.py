@@ -12,8 +12,8 @@ def addDir(file, bdir):
 
 
 bdir = '/home/wande/文档/docx'
-en_file = 'CTS-147_Rev01_CntrNxtONE_UG_b941835_CE_EU_EN_V5_3_3CMS_C.docx'
-cn_file = 'CTS-147_Rev01_CntrNxtONE_UG_b941835_CE_EU_EN_V5_3_3CMS_C-CN.docx'
+en_file = 'IB BAY 1101042_V4.0.docx'
+cn_file = 'IB BAY 1101042_V4.0-CN.docx'
 en_doc_name = os.path.splitext(en_file)[0]
 zh_doc_name = os.path.splitext(en_file)[0]
 en_file = addDir(en_file, bdir)
