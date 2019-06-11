@@ -25,7 +25,6 @@ parse.add_argument("-F", '--tgtSuffix', dest='tgtSuffix', choices=['docx', 'doc'
 
 args = parse.parse_args()
 print(args)
-action_type = args.actionType  # 操作类型
 sdir = args.sourceDir
 mdir = args.middleDir
 rdir = args.resultDir
