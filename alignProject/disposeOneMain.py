@@ -29,8 +29,6 @@ sdir = args.sourceDir
 mdir = args.middleDir
 rdir = args.resultDir
 lang2lang = args.lang2lang
-srcSuffix = args.tgtFile
-tgtSuffix = args.tgtFile
 if lang2lang == 'en2cn':
     en_doc = args.srcFile  # 文件名称（带后缀）
     cn_doc = args.tgtFile
