@@ -17,10 +17,10 @@ parse.add_argument("-M", '--middleDir', dest='middleDir', default='/home/wande/�
 parse.add_argument("-R", '--resultDir', dest='resultDir', default='/home/wande/文档/docx/result', help="""处理结果所在的目录""")
 parse.add_argument("-s", '--srcFile', dest='srcFile', default='1 summary-clin-efficacy-hemophilia-a-cn-final.docx', help="""要处理的源文件""")
 parse.add_argument("-t", '--tgtFile', dest='tgtFile', default='IB BAY 1101042_V4.0-CN.docx', help="""要处理的目标文件""")
-parse.add_argument("-l", '--lang2lang', dest='lang2lang', choice=['cn2en', 'en2cn'], default='en2cn', help="""语言对""")
-parse.add_argument("-f", '--srcSuffix', dest='srcSuffix', choice=['docx', 'doc', 'pdf', 'txt'], default='docx',
+parse.add_argument("-l", '--lang2lang', dest='lang2lang', choices=['cn2en', 'en2cn'], default='en2cn', help="""语言对""")
+parse.add_argument("-f", '--srcSuffix', dest='srcSuffix', choices=['docx', 'doc', 'pdf', 'txt'], default='docx',
                    help="""要处理的源文件后缀""")
-parse.add_argument("-F", '--tgtSuffix', dest='tgtSuffix', choice=['docx', 'doc', 'pdf', 'txt'], default='docx',
+parse.add_argument("-F", '--tgtSuffix', dest='tgtSuffix', choices=['docx', 'doc', 'pdf', 'txt'], default='docx',
                    help="""要处理的源文件后缀""")
 
 args = parse.parse_args()
