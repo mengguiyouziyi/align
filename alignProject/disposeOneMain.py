@@ -1,3 +1,6 @@
+"""
+处理单个文件
+"""
 import re, os
 
 from extractWordDocx2txt import docx2text
